@@ -24,9 +24,9 @@ def Discriminator(x, input_channel, z_num, repeat_num, hidden_num):
         # Encoder
         x = slim.conv2d(x, hidden_num, 3, 1, activation_fn=tf.nn.elu)
 
-        prev_channel_num = hidden_num
+        
         for idx in range(repeat_num):
-            channel_num = hidden_num * (idx + 1)
+            channel_num = repeat_num * (idx + 1)
             x = slim.conv2d(x, channel_num, 3, 1, activation_fn=tf.nn.elu)
             x = slim.conv2d(x, channel_num, 3, 1, activation_fn=tf.nn.elu)
             if idx < repeat_num - 1:
